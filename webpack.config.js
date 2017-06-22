@@ -6,7 +6,7 @@ const WebpackHtmlGeneratorPlugin = require('webpack-html-generator-plugin')
 module.exports = {
   entry: './src/style.styl',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './docs'),
     publicPath: ''
   },
   module: {
