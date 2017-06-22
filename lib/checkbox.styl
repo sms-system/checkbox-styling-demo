@@ -1,0 +1,113 @@
+$Checkbox_Position ?= 'left'
+$Checkbox_Size ?= 20
+$Checkbox_MarkSize ?= 14
+$CheckboxSwitch_Size ?= 40 20
+$CheckboxSwitch_MarkSize ?= 12
+$CheckboxSwitch_Padding ?= 4
+
+__getDimensions(size= 0 0)
+  width  = size[0]
+  height = size[1] || size[0]
+  return {
+    width: width,
+    height: height
+  }
+
+$CheckboxBase
+  chexboxStyleReset()
+    content ''
+    box-sizing border-box
+    position absolute
+    top 50%
+    transition all .2s
+
+  &:not(checked)
+    position absolute
+    opacity 0
+    & + label
+      position relative
+
+  &::input-box
+    chexboxStyleReset()
+
+  &::input-check
+    chexboxStyleReset()
+    backface-visibility hidden
+    transform translate3d(0,0,0)
+
+$Checkbox(
+  position= null,
+  size= null,
+  markSize= null
+)
+  @extend $CheckboxBase
+
+  position = $Checkbox_Position if position == null
+  size     = $Checkbox_Size if size == null
+  markSize = $Checkbox_MarkSize if markSize == null
+  wh       = __getDimensions(size)
+  markWh   = __getDimensions(markSize)
+
+  +cache('$Checkbox:' + join('|',
+    position,
+    wh,
+    markWh
+  ))
+
+    & + label
+      if position == 'left'
+        padding: 8px 0 8px (wh.width + 8)px
+      else
+        padding: 8px (wh.width + 8)px 8px 0
+
+    &::input-box
+      {position} 0
+      width: (wh.width)px
+      height: (wh.height)px
+      margin-top: (-(wh.height / 2)) px
+
+    &::input-check
+      {position}: (wh.width / 2 - markWh.width / 2) px
+      width: (markWh.width)px
+      height: (markWh.height)px
+      margin-top: (-(markWh.height / 2)) px
+
+$CheckboxSwitch(
+  position= null,
+  size= null,
+  markSize= null,
+  padding= null
+)
+
+  position = $Checkbox_Position if position == null
+  size     = $CheckboxSwitch_Size if size == null
+  markSize = $CheckboxSwitch_MarkSize if markSize == null
+  padding  = $CheckboxSwitch_Padding if padding == null
+  wh       = __getDimensions(size)
+  markWh   = __getDimensions(markSize)
+
+  $Checkbox(
+    position,
+    size,
+    markSize
+  )
+
+  +cache('$CheckboxSwitch:' + join('|',
+    position,
+    wh,
+    markWh,
+    padding
+  ))
+
+    &::input-check
+      {position}: (padding)px
+      if position == 'right'
+        transform: translateX((-(wh.width - markWh.width - padding * 2))px)
+      else
+        transform translateX(0)
+
+    &:checked::input-check
+      if position == 'left'
+        transform: translateX((wh.width - markWh.width - padding * 2)px)
+      else
+        transform translateX(0)

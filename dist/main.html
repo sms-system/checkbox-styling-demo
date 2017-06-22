@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>DEMO</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+  <div class="row">
+    <input id="checkbox1" type="checkbox">
+    <label for="checkbox1"> checkbox1
+  </div>
+  <details>
+    <summary>Code</summary>
+    <pre><code>
+      #checkbox1
+        $Checkbox(
+          size: 20 20,
+          markSize: 6 13
+        )
+        &::input-box
+          border-radius 2px
+          border 2px solid #555
+        &::input-check
+          opacity 0
+          border-right 2px solid #fff
+          border-bottom 2px solid #fff
+          transition opacity .3s, transform .8s
+        &:checked
+          &::input-box
+            background #009688
+            border-color #009688
+          &::input-check
+            opacity 1
+            transform rotate(45deg) translate(-1px, -2px)
+            transition all .3s
+    </code></pre>
+  </details>
+
+  <div class="row">
+    <input id="checkbox2" type="checkbox">
+    <label for="checkbox2"> checkbox2
+  </div>
+  <details>
+    <summary>Code</summary>
+    <pre><code>
+      #checkbox2
+        $Checkbox(
+          size: 32 32,
+          markSize: 20 10
+        )
+        &::input-box
+          border-radius 5px
+          border solid 1px rgba(#1d1d1d)
+        &::input-check
+          opacity 0
+          border solid 1px #1d1d1d
+          border-top none
+          border-right none
+          transition opacity .3s, transform .8s
+        &:checked
+          &::input-check
+            opacity 1
+            transform rotate(-45deg) translate(2px, -2px)
+            transition all .3s
+    </code></pre>
+  </details>
+
+  <div class="row">
+    <input id="checkbox3" type="checkbox">
+    <label for="checkbox3"> checkbox3
+  </div>
+  <details>
+    <summary>Code</summary>
+    <pre><code>
+      #checkbox3
+        $CheckboxSwitch(
+          position: right
+        )
+        &::input-box
+          border 1px solid #ccc
+          border-radius 5px
+        &::input-check
+          background #aaa
+          border-radius 5px
+        &:checked
+          &::input-check
+            background #000
+    </code></pre>
+  </details>
+
+  <div class="row">
+    <input id="checkbox4" type="checkbox">
+    <label for="checkbox4"> checkbox4
+  </div>
+  <details>
+    <summary>Code</summary>
+    <pre><code>
+      #checkbox4
+        $CheckboxSwitch(
+          size: 34 14,
+          markSize: 20,
+          padding: -2
+        )
+        &::input-box
+          background #9e9e9e
+          border-radius 7px
+        &::input-check
+          background #fafafa
+          border-radius 10px
+          box-shadow 0 3px 1px -2px rgba(0, 0, 0, 0.14),
+                     0 2px 2px 0 rgba(0, 0, 0, 0.098),
+                     0 1px 5px 0 rgba(0, 0, 0, 0.084)
+        &:checked
+          &::input-box
+            background #77c2bb
+          &::input-check
+            background #009688
+    </code></pre>
+  </details>
+
+</body>
+
+</html>

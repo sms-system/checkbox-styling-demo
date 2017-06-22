@@ -1,0 +1,21 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "Checkbox styling demo",
+  "main": "build.js",
+  "author": "Serge Smirnov <sms-system@mail.ru>",
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "postcss-checkbox-pseudos": "^1.0.0",
+    "postcss-loader": "^2.0.6",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "webpack": "^3.0.0",
+    "webpack-html-generator-plugin": "^0.1.2"
+  }
+}
